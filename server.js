@@ -1,10 +1,22 @@
 const express = require('express');
 const app = express();
+const port = 3000
+var cors = require('cors');
 
-app.listen(8081, function(){
-    console.log('listening on 8081');
-});
+app.use(cors())
 
-app.get('/', function(req, res){
-    res.sendFile(__dirname + '/index.html');
+app.get('/', (req, res) => {
+    res.send('Hello World!');
 })
+
+app.get('/dog', (req, res) => {
+    res.send('강아지');
+})
+
+app.get('/cat', (req, res) => {
+    res.send('고양이');
+})
+
+app.listen(port, () => {
+    console.log(`listening on port ${port}`);
+});
